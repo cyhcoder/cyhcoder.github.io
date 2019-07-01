@@ -362,7 +362,7 @@ vi文件的基本使用：
 <li><p>首先去官网下载Java的tar.gz压缩包，这里提供的是jdk1.8的安装路径，需要安装别的版本请自行查找。</p>
 <p><a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a></p>
 <p>进入网站，勾选接受许可协议，然后下载所需要的linux版本，然后通过上传工具上传到linux系统下的/usr/local目录下。</p>
-<p><img src="https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1561962419336.png" alt="1561962419336"></p>
+<p><img src="https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1561962419336.png" alt></p>
 </li>
 <li><p>然后在/usr/local目录下，直接解压刚刚上传的文件</p>
 <pre class=" language-linux"><code class="language-linux">   tar -vzxf jdk-8u211-linux-x64.tar.gz </code></pre>
@@ -372,7 +372,7 @@ vi文件的基本使用：
    export JAVA_HOME=/usr/local/jdk1.8.0_211 //这里是JDK的目录地址
    export CLASSPATH=$:CLASSPATH:$JAVA_HOME/lib/
    export PATH=$PATH:$JAVA_HOME/bin</code></pre>
-<p><img src="https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1561964513380.png" alt="1561962419336"></p>
+<p><img src="https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1561964513380.png" alt></p>
 </li>
 <li><p>保存退出之后（按Esc键，按下Shift+:，再输入wq，回车），重新加载配置文件</p>
 <pre class=" language-linux"><code class="language-linux">   source /etc/profile</code></pre>
@@ -381,13 +381,13 @@ vi文件的基本使用：
 <pre class=" language-linux"><code class="language-linux">   java -version</code></pre>
 </li>
 </ol>
-<p><img src="https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1561965033517.png" alt="1561965033517"></p>
+<p><img src="https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1561965033517.png" alt></p>
 <h2 id="MySQL的安装"><a href="#MySQL的安装" class="headerlink" title="MySQL的安装"></a>MySQL的安装</h2><h3 id="通过tar-gz压缩包安装-1"><a href="#通过tar-gz压缩包安装-1" class="headerlink" title="通过tar.gz压缩包安装"></a>通过tar.gz压缩包安装</h3><ol>
 <li><p>首先根据个人需要关闭Linux的防火墙，执行命令</p>
 <pre class=" language-linux"><code class="language-linux">chkconfig iptables off</code></pre>
 </li>
 <li><p>从mysql官网上下载自己合适的mysql版本。<br><a href="https://dev.mysql.com/downloads/mysql/5.6.html#downloads" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/5.6.html#downloads</a></p>
-<p><img src="C:%5CUsers%5CHasee%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1561975264256.png" alt="1561975264256"></p>
+<p><img src="https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1561975264256.png" alt>)</p>
 </li>
 <li><p>将下载好的压缩包上传到linux服务器上的/usr/local（这里注意一定路径不能出错，不然后面会很麻烦），上传完成之后，直接解压该文件。</p>
 <pre class=" language-linux"><code class="language-linux">tar -zxvf mysql-5.6.33-linux-glibc2.5-x86_64.tar.gz</code></pre>
