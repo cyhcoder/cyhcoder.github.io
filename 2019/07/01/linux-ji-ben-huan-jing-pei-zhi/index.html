@@ -401,7 +401,8 @@ vi文件的基本使用：
 <pre class=" language-Linux"><code class="language-Linux">$ groupadd mysql useradd -r -g mysql mysql</code></pre>
 </li>
 <li><p>进入/usr/local/mysql目录更改目录</p>
-<pre class=" language-Linux"><code class="language-Linux">$ cd mysql/ chown -R mysql:mysql ./</code></pre>
+<pre class=" language-Linux"><code class="language-Linux">$ cd mysql/ 
+$ chown -R mysql:mysql ./</code></pre>
 </li>
 <li><p>执行安装脚本</p>
 <pre class=" language-Linux"><code class="language-Linux">$ ./scripts/mysql_install_db --user=mysql</code></pre>
@@ -468,9 +469,10 @@ max_allowed_packet=100M</code></pre>
 <pre class=" language-Linux"><code class="language-Linux">   $ cd src/
    $ make install</code></pre>
 <h4 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h4><ol start="4">
-<li>安装完成之后，为了方便管理将Redis文件中的配置文件和常用命令移动到统一文件中</li>
+<li><p>安装完成之后，为了方便管理将Redis文件中的配置文件和常用命令移动到统一文件中</p>
+<p>1) 在redis目录下创建bin和etc文件</p>
+</li>
 </ol>
-<p>​    1) 在redis目录下创建bin和etc文件</p>
 <pre class=" language-Linux"><code class="language-Linux">   $ mkdir bin
    $ mkdir etc</code></pre>
 <p>​    2) 将redis.conf文件复制到刚刚创建的etc目录下</p>
