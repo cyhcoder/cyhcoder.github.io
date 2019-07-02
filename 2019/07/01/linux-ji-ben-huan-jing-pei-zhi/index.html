@@ -328,7 +328,7 @@ vi文件的基本使用：
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.7k
+                        1.9k
                     </div>
                     
 
@@ -489,31 +489,51 @@ $ redis-server</code></pre>
 <pre class=" language-Linux"><code class="language-Linux">$ vi redis.conf</code></pre>
 </li>
 </ol>
-<p><img src="C:%5CUsers%5CHasee%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562031921839.png" alt="1562031921839"></p>
+<p><img src="https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1562031921839.png" alt></p>
 <ol start="7">
 <li>设置在后台启动redis，编辑redis.conf文件，将下图的配置修改为yes（我这里是修改之后的）<pre class=" language-Linux"><code class="language-Linux">$ vi redis.conf</code></pre>
 </li>
 </ol>
-<p><img src="C:%5CUsers%5CHasee%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562031888808.png" alt="1562031888808"></p>
+<p><img src="https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1562031888808.png" alt></p>
 <ol start="8">
 <li>再次启动redis服务，并指定启动的服务配置文件，这样就能在后台启动<pre class=" language-Linux"><code class="language-Linux">$ redis-server etc/redis.conf    //启动redis服务，并指定配置文件
 $ bin/redis-cli                  //链接客户端
 $ netstat -tunpl|grep 6379        //链接客户端</code></pre>
 </li>
 </ol>
-<p><img src="C:%5CUsers%5CHasee%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562032592616.png" alt="1562032592616"></p>
+<p><img src="https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1562032592616.png" alt></p>
 <p>出现如上图中的“Configuration loaded”则表示已经成功加载了配置文件</p>
-<p>####注册服务</p>
-<ol>
-<li>可以根据个人需要将Redis注册成服务，首先复制脚本到/etc/rc.d/init.d目录下，并重命名为redis<pre class=" language-Linux"><code class="language-Linux">$ cp /usr/local/src/redis-5.0.5/utils/redis_init_script /etc/rc.d/init.d/redis</code></pre>
+<h4 id="注册服务"><a href="#注册服务" class="headerlink" title="注册服务"></a>注册服务</h4><ol>
+<li><p>可以根据个人需要将Redis注册成服务，首先复制脚本到/etc/rc.d/init.d目录下，并重命名为redis</p>
+<pre class=" language-Linux"><code class="language-Linux">$ cp /usr/local/src/redis-5.0.5/utils/redis_init_script /etc/rc.d/init.d/redis</code></pre>
 </li>
-<li>将其注册为服务（我在这里是没有问题，但我看网上的教程可能会出问题，需要改redis脚本）<pre class=" language-Linux"><code class="language-Linux">$ chkconfig --add redis</code></pre>
+<li><p>将其注册为服务（我在这里是没有问题，但我看网上的教程可能会出问题，需要改redis脚本）</p>
+<pre class=" language-Linux"><code class="language-Linux">$ chkconfig --add redis</code></pre>
 </li>
-<li>将redis的配置文件拷贝到/etc/redis/6379.conf（这里端口号默认为6379）<pre class=" language-Linux"><code class="language-Linux">$ mkdir /etc/redis
+<li><p>将redis的配置文件拷贝到/etc/redis/6379.conf（这里端口号默认为6379）</p>
+<pre class=" language-Linux"><code class="language-Linux">$ mkdir /etc/redis
 $ cp /usr/local/src/redis-5.0.5/etc/redis.conf /etc/redis/6379.conf</code></pre>
 </li>
-<li>启动redis服务<pre class=" language-Linux"><code class="language-Linux">$ service redis start</code></pre>
-####停止</li>
+<li><p>启动redis服务</p>
+<pre class=" language-Linux"><code class="language-Linux">$ service redis start</code></pre>
+<h4 id="添加环境变量"><a href="#添加环境变量" class="headerlink" title="添加环境变量"></a>添加环境变量</h4><p>当我们通过后台启动Redis后，每次调用redis-cli命令都需要进入redis目录下，这个时候可以添加环境变量，来使任何地方都可以调用redis-cli命令。</p>
+<ol>
+<li>修改/etc/profile文件，在最后一行追加命令，并使profile文件立即生效<pre class=" language-Linux"><code class="language-Linux">$ vi /etc/prifile
+</code></pre>
+</li>
+</ol>
+<p>$ export PATH=”$PATH:/usr/local/redis/bin”</p>
+<p>$ source /etc/profile</p>
+<ol start="2">
+<li>这样就可以直接调用redis-cli命令了，如下图所示<pre><code></code></pre></li>
+</ol>
+<p><img src="https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1562035693456.png" alt></p>
+</li>
+</ol>
+<h4 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h4><ol>
+<li>前台模式启动：Ctrl+C</li>
+<li>后台模式启动：$ sudo kill -9 666 （注意：-9为强制终止，666为此时redis-server的进程ID）</li>
+<li>推荐的方式：$ redis-cli shutdown (通过redis-cli调用shutdown命令来优雅的关闭)</li>
 </ol>
 
             </div>
@@ -842,7 +862,7 @@ $ cp /usr/local/src/redis-5.0.5/etc/redis.conf /etc/redis/6379.conf</code></pre>
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">1.7k</span>
+                <span class="white-color">1.9k</span>
             
 
             
