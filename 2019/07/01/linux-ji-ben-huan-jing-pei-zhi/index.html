@@ -518,14 +518,16 @@ $ cp /usr/local/src/redis-5.0.5/etc/redis.conf /etc/redis/6379.conf</code></pre>
 </ol>
 <p>当我们通过后台启动Redis后，每次调用redis-cli命令都需要进入redis目录下，这个时候可以添加环境变量，来使任何地方都可以调用redis-cli命令。</p>
 <ol>
-<li><p>修改/etc/profile文件，在最后一行追加命令，并使profile文件立即生效<br>```Linux<br>$ vi /etc/prifile</p>
-<p>$ export PATH=”$PATH:/usr/local/redis/bin”</p>
-<p>$ source /etc/profile</p>
+<li><p>修改/etc/profile文件，在最后一行追加命令，并使profile文件立即生效</p>
+<pre class=" language-Linux"><code class="language-Linux">$ vi /etc/profile
+
+$ export PATH="$PATH:/usr/local/redis/bin"
+
+$ source /etc/profile</code></pre>
 </li>
 <li><p>这样就可以直接调用redis-cli命令了，如下图所示</p>
-<pre><code>
-![](https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1562035693456.png)
-</code></pre></li>
+<p><img src="https://blog-images-cyhcoder.oss-cn-shanghai.aliyuncs.com/images/1562035693456.png" alt></p>
+</li>
 </ol>
 <h4 id="停止"><a href="#停止" class="headerlink" title="停止"></a>停止</h4><ol>
 <li>前台模式启动：Ctrl+C</li>
