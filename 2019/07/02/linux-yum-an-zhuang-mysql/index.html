@@ -416,14 +416,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        650
+                        841
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        3 分
                     </div>
                     
                 
@@ -483,8 +483,22 @@
 <pre><code>    $ chown mysql:mysql /var/lib/mysql -R        //在mysql目录下
     $ systemctl start mysqld.service
     $ systemctl status mysqld.service</code></pre><h2 id="登录数据库，并修改密码"><a href="#登录数据库，并修改密码" class="headerlink" title="登录数据库，并修改密码"></a>登录数据库，并修改密码</h2><p>需先修改密码才能对数据库进行操作，初始登录密码可在/var/log/mysqld.log文件中找到</p>
-<pre><code>    $ # mysql -uroot -p&#39;******&#39;</code></pre><p>进入数据库之后（修改密码的方式有多种，如果该方式失败，）</p>
-<pre><code>    &gt; set password=password(&#39;root&#39;);</code></pre><h2 id="修改访问权限"><a href="#修改访问权限" class="headerlink" title="修改访问权限"></a>修改访问权限</h2><p>在登录数据库之后，修改其访问权限，通过外网可以进行访问</p>
+<pre><code>    $ # mysql -uroot -p&#39;******&#39;</code></pre><p>如果进入数据库失败，则很可能是提示没有权限，这个时候先找到mysql的配置文件my.cnf</p>
+<p><img src="C:%5CUsers%5CHasee%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562146082569.png" alt="1562146082569"></p>
+<p>将其打开，然后在[mysqld]的下面添加”skip-grant-tables”这句话，然后保存退出。</p>
+<pre><code>    skip-grant-tables</code></pre><p><img src="C:%5CUsers%5CHasee%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562146162353.png" alt="1562146162353"></p>
+<p>然后重启下mysql</p>
+<pre><code>    $ service mysqld restart</code></pre><p><img src="C:%5CUsers%5CHasee%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562146291366.png" alt="1562146291366"></p>
+<p>然后通过mysql -uroot命令，不需要密码即可直接进入数据库</p>
+<pre><code>    $ mysql -uroot</code></pre><p><img src="C:%5CUsers%5CHasee%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562146358304.png" alt="1562146358304"></p>
+<p>进入数据库之后修改密码，这个时候应该会报错，再接着输入flush privileges;刷新一下权限，在设置一遍密码即可。</p>
+<pre><code>    &gt; set password for &#39;root&#39;@&#39;localhost&#39; = password(&#39;root&#39;);</code></pre><p><img src="C:%5CUsers%5CHasee%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562146472447.png" alt="1562146472447"></p>
+<pre><code>    &gt; flush privileges;</code></pre><p><img src="C:%5CUsers%5CHasee%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562146614875.png" alt="1562146614875"></p>
+<p>设置完成之后，退出数据库，再进入刚刚的配置文件my.cnf，将刚刚加上的代码注释掉。</p>
+<p><img src="C:%5CUsers%5CHasee%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562146688922.png" alt="1562146688922"></p>
+<p>注释完成之后重启下mysql服务，便设置密码成功了，可以试试能否通过密码进行登录。</p>
+<p><img src="C:%5CUsers%5CHasee%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1562146774356.png" alt="1562146774356"></p>
+<h2 id="修改访问权限"><a href="#修改访问权限" class="headerlink" title="修改访问权限"></a>修改访问权限</h2><p>在登录数据库之后，修改其访问权限，通过外网可以进行访问</p>
 <pre><code>    &gt; GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;root&#39; WITH GRANT OPTION;
 </code></pre>
             </div>
@@ -909,7 +923,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3.2k</span>
+                <span class="white-color">3.4k</span>
             
 
             
